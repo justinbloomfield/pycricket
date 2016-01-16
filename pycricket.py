@@ -13,19 +13,27 @@ global bowl_type
 
 # FUNCTIONS
 
-def game(); #runs the functions together
+def game(): #runs the functions together
+	pass
+#	while innings = 1; #first half of the game
+#		while overs >= 0;
+#
 	
-	while innings = 1; #first half of the game
-		while overs >= 0;
 
-	
-
-def bowl();
+def bowl():
 	global overs
+	global ball
 	global bowl_type
 	bowl_type = str(input("Do you wish to bowl pace, spin or off-spin? [p/s/o]: "))
-	if bowl_type = "p"
+	if bowl_type = "p":
 		speed = randint(90,131)
 		print("Bowled at " + speed + "km/h.")
-	if bowl_type = "s"
-		speed = 
+	if bowl_type = "s":
+		speed = randint(70, 101)
+		print("Bowled at " + speed + "km/h.")
+	if bowl_type = "o":
+		speed = randint(70, 101)
+		print("Bowled at " + speed + "km/h")				 
+	#Ball/over counting to go in batting function, so as to avoid missing hits of bowled balls due to bad number management
+	
+
