@@ -75,8 +75,8 @@ def coin_flip():
 			print(t1_name + " has chosen to bowl first. " + t2_name ", ready your bats!")
  			cur_team = 2
 	else:
-		choice=str 
-
+                pass
+                
 
 # RUN FUNCTIONS
-bowl()
+coinflip()
