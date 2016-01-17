@@ -1,5 +1,6 @@
 #IMPORTS
 from random import randint
+
 #INITIALISE GLOBAL VARIABLES
 global t1_runs
 global t2_runs
@@ -11,6 +12,7 @@ global overs
 global ball
 global innings
 global bowl_type
+global speed
 
 t1_runs = 0
 t2_runs = 0
@@ -22,7 +24,7 @@ overs = int(input("How many overs do you wish to play? "))
 ball = 6
 innings = 1
 bowl_type = 0
-
+speed = 0
 # FUNCTIONS
 
 #def game(): #runs the functions together
@@ -36,6 +38,7 @@ def bowl():
 	global overs
 	global ball
 	global bowl_type
+	global speed
 	bowl_type = str(input("Do you wish to bowl pace, spin or off-spin? [p/s/o] "))
 	if bowl_type == "p":
 		speed = randint(90,131)
@@ -48,6 +51,10 @@ def bowl():
 		print("Bowled at " + str(speed) + "km/h")				 
 	#Ball/over counting to go in batting function, so as to avoid missing hits of bowled balls due to bad number management
 	
-
+def bat():
+	global speed
+	global bowl_type
+	if bowl_type == "p" and speed < 100:
+		hit_chance = 0
 # RUN FUNCTIONS
 bowl()
