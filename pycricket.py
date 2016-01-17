@@ -13,6 +13,7 @@ global ball
 global innings
 global bowl_type
 global speed
+global cur_team
 
 t1_runs = 0
 t2_runs = 0
@@ -25,6 +26,7 @@ ball = 6
 innings = 1
 bowl_type = 0
 speed = 0
+cur_team = 1
 # FUNCTIONS
 
 #def game(): #runs the functions together
@@ -55,6 +57,26 @@ def bat():
 	global speed
 	global bowl_type
 	if bowl_type == "p" and speed < 100:
-		hit_chance = 0
+		hit_chance = rand(0,1)
+		if hit_chance < 0.1:
+			print("Bowled out!")
+			if 
+
+def coin_flip():
+	global t1_name
+	global t2_name
+	global cur_team
+	flip = randint(0.2)
+	t1_call = str(input("Team 1 heads or tails? [h/t] "))
+	if flip == 1 and t1_call == "h":
+		print("Heads!")
+		choice=str(input(t1_name + ", do you wish to bat or bowl? [ba/bo] " ))
+		if choice == "bo":
+			print(t1_name + " has chosen to bowl first. " + t2_name ", ready your bats!")
+ 			cur_team = 2
+	else:
+		choice=str 
+
+
 # RUN FUNCTIONS
 bowl()
