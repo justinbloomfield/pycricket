@@ -3,8 +3,8 @@ from random import randint
 from time import sleep
 
 #INITIALISE GLOBAL VARIABLES
-global t1_runs
-global t2_runs
+global t1_score
+global t2_score
 global t1_name
 global t2_name
 global t1_outs
@@ -16,14 +16,14 @@ global bowl_type
 global speed
 global cur_team
 
-t1_runs = 0
-t2_runs = 0
+t1_score =0
+t2_score = 0
 t1_name = "Still"
 t2_name = "Testing!"
 t1_outs = 0
 t2_outs = 0
 overs = int(input("How many overs do you wish to play? "))
-ball = 6
+ball = 0
 innings = 1
 bowl_type = 0
 speed = 0
@@ -66,10 +66,49 @@ def bowl():
 def bat():
 	global speed
 	global bowl_type
+	global cur_team
+	global t1_outs
+	global t2_outs
+	global innnings
+
 	if bowl_type == "p" and speed < 100:
 		hit_chance = rand(0,1)
 		if hit_chance < 0.1:
 			print("Bowled out!")
+			out()
+		if 0.1 < hit_chance < 0.2:
+			pass		
+def print_score(): #Displays score according to team currently batting
+	global cur_team
+	global t1_outs
+	global t2_outs
+	global t1_score
+	global t2_score
+	if cur_team == 1:
+		print("Current Score: " + str(t1_outs) + "/" + str(t1_score))	
+	elif cur_team == 2:
+		print("Current Score: " + str(t2_outs) + "/" + str(t2_score))
+	
+def out(): #Moves code for out checking to a separate function to keep batting function cleaner
+	global t1_outs
+	global t2_outs 
+	global t1_score
+	global t2_score
+	if innings == 1:
+		if cur_team == 1:
+			t1_outs += 1
+			if t1_outs == 9: #Check to see if all out
+				print("All out for " + str(t1_score) + ", change sides!")
+				cur_team = 2
+			else:
+				print_score()
+		if cur_team == 2:
+			t2_outs += 1 	
+			if t2_outs == 9:
+				print("All out for " + t2_score + ", change sides!")
+				cur_team = 1
+			else:
+				print_score()
 def suspense(): #Function to slow down pace of game, makes it easier to follow and adds, as it says, suspense
 	print(". " , end='', flush=True)
 	sleep(0.5)
@@ -77,6 +116,7 @@ def suspense(): #Function to slow down pace of game, makes it easier to follow a
 	sleep(0.5)
 	print("." , flush=True)
 	sleep(0.5)
+
 def coin_flip(): #Coin toss to decide who bats/bowls first
 	global t1_name
 	global t2_name
@@ -94,6 +134,8 @@ def coin_flip(): #Coin toss to decide who bats/bowls first
 			flip_long = "Heads!"
 		else:
 			flip_long = "Tails!"
+		print("",flush=True)
+		sleep(1)
 		print(flip_long)
 		choice=str(input(t1_name + ", do you wish to bat or bowl? [ba/bo] " ))
 		if choice == "bo":
@@ -120,4 +162,5 @@ def coin_flip(): #Coin toss to decide who bats/bowls first
  
 		
 # RUN FUNCTIONS
-coin_flip()
+#coin_flip()
+print_score()
