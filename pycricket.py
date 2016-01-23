@@ -15,14 +15,16 @@ global innings
 global bowl_type
 global speed
 global cur_team
+global overs_stored
 
-t1_score =0
+t1_score = 0
 t2_score = 0
 t1_name = "Still"
 t2_name = "Testing!"
 t1_outs = 0
 t2_outs = 0
-overs = int(input("How many overs do you wish to play? "))
+overs_stored = int(input("How many overs do you wish to play? "))
+overs = overs_stored
 ball = 0
 innings = 1
 bowl_type = 0
@@ -48,7 +50,6 @@ def setup(): #Hoping to further develop this to be much more complex, but for no
 
 def bowl():
 	global overs
-	global ball
 	global bowl_type
 	global speed
 	bowl_type = str(input("Do you wish to bowl pace, spin or off-spin? [p/s/o] "))
@@ -69,8 +70,8 @@ def bat():
 	global cur_team
 	global t1_outs
 	global t2_outs
-	global innnings
-
+	global innings
+	global ball	
 	if bowl_type == "p" and speed < 100:
 		hit_chance = rand(0,1)
 		if hit_chance < 0.1:
@@ -78,6 +79,16 @@ def bat():
 			out()
 		if 0.1 < hit_chance < 0.2:
 			pass		
+	
+	if ball < 6:
+		ball += 1
+	elif ball == 6 and overs > 0:
+		overs -= 1
+	elif overs == 0:
+		if cur_team == 1 and innings = :
+			print("Innings done! Final score for " + str(t1_name) + " is " + str(t1_out) + "/" + str(t1_score))
+			print("Change sides!")
+			
 def print_score(): #Displays score according to team currently batting
 	global cur_team
 	global t1_outs
