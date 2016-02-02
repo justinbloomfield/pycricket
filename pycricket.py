@@ -23,7 +23,7 @@ t1_name = "Still"
 t2_name = "Testing!"
 t1_outs = 0
 t2_outs = 0
-overs_stored = int(input("How many overs do you wish to play? "))
+overs_stored = 0
 overs = overs_stored
 ball = 0
 innings = 1
@@ -42,11 +42,12 @@ def setup(): #Hoping to further develop this to be much more complex, but for no
 	global t1_name
 	global t2_name
 	global overs
+	global overs_stored
 
 	t1_name = str(input("What is the name of Team 1? "))
 	t2_name = str(input("What is the name of Team 2? "))
 	overs = int(input("How many overs do you wish to play? "))
-
+	overs_stored = overs
 
 def bowl():
 	global overs
@@ -85,7 +86,7 @@ def bat():
 	elif ball == 6 and overs > 0:
 		overs -= 1
 	elif overs == 0:
-		if cur_team == 1 and innings = :
+		if cur_team == 1 and innings == 1 :
 			print("Innings done! Final score for " + str(t1_name) + " is " + str(t1_out) + "/" + str(t1_score))
 			print("Change sides!")
 			
@@ -170,8 +171,13 @@ def coin_flip(): #Coin toss to decide who bats/bowls first
 		elif choice == "ba":
 			print( t2_name + " has chosen to bat first. ")
 			print( t1_name + ", to your positions!")
- 
+def testing():
+	setup()
+	bowl()
+	bat()
+	print_score()		 
 		
 # RUN FUNCTIONS
 #coin_flip()
-print_score()
+#print_score()
+testing()
