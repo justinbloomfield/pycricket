@@ -180,5 +180,5 @@ def testing():
 # RUN FUNCTIONS
 #coin_flip()
 #print_score()
-#this is a test
+#this is a test for magit
 testing()
